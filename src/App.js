@@ -1,5 +1,11 @@
+import Layout from "./Layout"
+
 function App() {
-  return <h1>Lotion</h1>;
+  return  (
+    <>
+    <Layout/>
+    </>
+  )
 }
 
 export default App;
