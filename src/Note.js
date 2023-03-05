@@ -1,4 +1,5 @@
 export default function Note({Title, Date, Content}) {
+    
     return (
         <div id="note">
             <div>

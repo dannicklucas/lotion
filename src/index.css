@@ -103,13 +103,17 @@ a {
   text-align: center;
   color: grey;
   font-size: 20px;
-  padding-top: 4px;
+  
+  
 }
 
 #note {
   display: flex;
+  flex-direction: column;
   background-color: grey;
   color: white;
+  height: 75px;
+  text-align: left;
 }
 
 #underHeader {
