@@ -16,6 +16,7 @@ export default function View() {
             if (Object.keys(note).length === 1) {
                 setNote (toNotDelete)
                 navigate(`/`, {replace: true});
+                document.getElementById("noNote").style.display = "block";
             }
             else {
                 setNote (toNotDelete) 
@@ -26,7 +27,7 @@ export default function View() {
     
     
     return (
-        <div id="edit">
+        <div className="edit">
             <div id="note-title-view">
                 <div id="title-view" dangerouslySetInnerHTML={{__html: editingNote.Title}} />
                 <div id="datetime" dangerouslySetInnerHTML={{__html: editingNote.Date}} />

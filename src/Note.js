@@ -1,4 +1,4 @@
-export default function Note({ID, Title, Date, Content}) {
+export default function Note({ID, Title, Date, realDate, Content}) {
     var setContent;
     var setTitle;
     if (Content === "") {
@@ -25,7 +25,7 @@ export default function Note({ID, Title, Date, Content}) {
                     {setTitle}
                 </div>
                     
-                <div>
+                <div id="note-content-side">
                     {Date}
                 </div>
 

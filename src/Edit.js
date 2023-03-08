@@ -10,7 +10,8 @@ export default function Edit() {
     const editingNote =  note.find(theNote => theNote.Id === id)
     const[title, setTitle] = useState(editingNote.Title);
     const[content, setContent] = useState(editingNote.Content);
-    const[date, setDate] = useState(editingNote.Date);
+    const[date, setDate] = useState(editingNote.realDate);
+    
 
     const options = {
         year: "numeric",
@@ -33,6 +34,7 @@ export default function Edit() {
         editingNote.Content = content;
         editingNote.Title = title;
         localStorage.setItem("notes", JSON.stringify(note));
+        editingNote.Date = formatDate(date);
        
     }
 
@@ -44,6 +46,7 @@ export default function Edit() {
             if (Object.keys(note).length === 1) {
                 setNote (toNotDelete)
                 navigate(`/`, {replace: true});
+                document.getElementById("noNote").style.display = "block";
             }
             else {
                 setNote (toNotDelete) 
@@ -57,10 +60,10 @@ export default function Edit() {
 
     
     return (
-        <div id="edit">
+        <div className="edit">
             <div id="note-title">
                 <input id="title-edit" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-                <input type="datetime-local" />
+                <input type="datetime-local" value = {date} onChange={(e) => setDate(e.target.value)} />
                 <div id="idkman">
                     <Link to={`/view/${id}`}>
                         <label id="save" onClick={save()}>Save</label>

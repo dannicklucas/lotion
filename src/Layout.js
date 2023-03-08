@@ -13,15 +13,20 @@ export default function Layout() {
     useEffect(() => {
 
         localStorage.setItem("notes", JSON.stringify(note));
+       
         
       }, [note]);
     
-    // const [note, setNote] = useState([]);
+    
 
     function addNote() {
+        let  now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        let date = now.toISOString().slice(0,16); 
         var newNote = {
             Title: "Untitled",
             Date: "",
+            realDate: date,
             Content: "",
             Id: uuid()
         }
@@ -34,11 +39,23 @@ export default function Layout() {
         navigate(`/edit/${newNote.Id}`, {replace: true});
         
     }
+
+    function hideSide() {
+        document.querySelector(".side").classList.toggle("sideHidden");
+        if (note.length === 0) {
+            document.querySelector(".middle").classList.toggle("fullPage");
+        }
+        else {
+            document.querySelector(".edit").classList.toggle("fullPage");
+        }
+        
+        
+    }
     
     return (
         <div id="page">
             <div id="header">
-                <label id="menu">
+                <label id="menu" onClick={hideSide} >
                     &#9776;
                 </label>
                 <div id="title">
@@ -47,7 +64,7 @@ export default function Layout() {
                 </div>
             </div>
             <div id="underHeader">
-                <div id="side">
+                <div className="side">
                     <div id="addNote">
                         <div>
                             Notes
@@ -61,7 +78,7 @@ export default function Layout() {
                         
                         {note.map((newNote) => (
                             <Link key={newNote.Id} to={`/view/${newNote.Id}`}> 
-                                <Note ID={newNote.Id} Title = {newNote.Title} Date = {newNote.Date} Content = {newNote.Content} />
+                                <Note ID={newNote.Id} Title = {newNote.Title} Date = {newNote.Date} realDate = {newNote.realDate} Content = {newNote.Content} />
                             </Link>
                         ))}
 

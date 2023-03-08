@@ -1,6 +1,6 @@
 export default function Default() {
     return (
-        <div id="middle">
+        <div className="middle">
             Select a note, or create a new one.
         </div> 
     )
