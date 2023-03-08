@@ -13,9 +13,15 @@ export default function Layout() {
     useEffect(() => {
 
         localStorage.setItem("notes", JSON.stringify(note));
+        if (note.length !== 0) {
+            document.getElementById("noNote").style.display = "none";
+          }
        
         
       }, [note]);
+
+    
+      
     
     
 

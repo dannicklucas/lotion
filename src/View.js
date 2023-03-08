@@ -13,7 +13,7 @@ export default function View() {
         if (answer) {
             const toNotDelete =  note.filter(theNote => theNote.Id !== id);
 
-            if (Object.keys(note).length === 1) {
+            if (note.length === 1) {
                 setNote (toNotDelete)
                 navigate(`/`, {replace: true});
                 document.getElementById("noNote").style.display = "block";
